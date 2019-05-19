@@ -1,5 +1,3 @@
-
-
 """
 @project : AutoTest
 @author  : zhangbaoquan
@@ -21,6 +19,7 @@
 
 """
 import time
+
 from AutoTest.utils import ADBUtils
 
 if __name__ == '__main__':
@@ -33,13 +32,13 @@ if __name__ == '__main__':
     loopCount = 10
 
     # print("device id : "+sys.argv[1])
-    adb = ADBUtils(packageName,pagePath)
+    adb = ADBUtils(packageName, pagePath)
 
-    for i in range(1,loopCount):
+    for i in range(1, loopCount):
         adb.startApp()
         # 这里设置 3s 延时是考虑等广告展示出来后在点击
         time.sleep(3)
-        adb.clickApp(500,500)
+        adb.clickApp(500, 500)
         # 这是设置 3s 延时是考虑等广告落地页展示出来后再按back键返回到书城
         time.sleep(3)
         adb.clickBack()
