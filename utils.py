@@ -100,7 +100,8 @@ class ADBUtils:
     # 点击事件
     # x : 屏幕的横坐标
     # y : 屏幕的纵坐标
-    def clickApp(self, x, y):
+    @staticmethod
+    def clickApp(x, y):
         clickAppCommand = "adb shell input tap " + x + " " + y
         print("点击："+clickAppCommand)
         os.system(clickAppCommand)
