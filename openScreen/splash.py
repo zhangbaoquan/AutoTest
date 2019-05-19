@@ -9,13 +9,13 @@
 """
 import time
 
-from AutoTest.utils import ADBUtils
+from AutoTest.utils import *
 from AutoTest.const import Const
 
 if __name__ == '__main__':
 
     # 循环的次数
-    loopCount = 10
+    loopCount = 3
 
     # print("device id : "+sys.argv[1])
     # 这里以VIVO的欢迎界面为例
@@ -25,7 +25,13 @@ if __name__ == '__main__':
         adb.startApp()
         # 这里设置 3s 延时是考虑等广告展示出来后在点击
         time.sleep(3)
-        adb.clickApp(500, 500)
+        screenSize = calculateScreenSize()
+        width = int(screenSize[0])
+        high = int(screenSize[1])
+        x = positionX(width, 6)
+        y = positionY(high, 6)
+        # 这里设置点击位置在屏幕宽度、高度的1/6处
+        adb.clickApp(str(x), str(y))
         # 这是设置 3s 延时是考虑等广告落地页展示出来后再按back键返回到书城
         time.sleep(3)
         adb.clickBack()
